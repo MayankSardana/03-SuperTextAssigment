@@ -59,6 +59,16 @@ app.get('/question' , async(req , res)=>{
     res.send("INTERNAL SERVER ERROR");
     }
 })
+app.get('/custom' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q]);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
 
 app.get('/optionA' , async(req , res)=>{
     let {q} = req.query;
