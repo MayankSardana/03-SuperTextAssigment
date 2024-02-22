@@ -54,7 +54,8 @@ app.get('/question' , async(req , res)=>{
     try{
         const records = await getAirtableData();
         // console.log(records[q].Question)
-        res.send(records[q].Question);
+        let myq = records[q];
+        res.send(myq['Question'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -64,7 +65,7 @@ app.get('/custom' , async(req , res)=>{
     try{
         const records = await getAirtableData();
         // console.log(records[q].Question)
-        res.send(records[q]);
+        res.send(records[q].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -74,8 +75,8 @@ app.get('/optionA' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        // console.log(records[q].Question)
-        res.send(records[q].OptionA);
+        let myq = records[q];
+        res.send(myq['OptionA'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -84,8 +85,8 @@ app.get('/optionB' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        // console.log(records[q].Question)
-        res.send(records[q].OptionB);
+        let myq = records[q];
+        res.send(myq['OptionB'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -94,8 +95,8 @@ app.get('/optionC' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        // console.log(records[q].Question)
-        res.send(records[q].OptionC);
+        let myq = records[q];
+        res.send(myq['OptionC'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -104,8 +105,8 @@ app.get('/optionD' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        // console.log(records[q].Question)
-        res.send(records[q].OptionD);
+        let myq = records[q];
+        res.send(myq['OptionD'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
@@ -114,8 +115,8 @@ app.get('/Solution' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        // console.log(records[q].Question)
-        res.send(records[q].Solution);
+        let myq = records[q];
+        res.send(myq['Solution'].toString());
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
