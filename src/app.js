@@ -49,15 +49,69 @@ app.get('/all', async(req, res) => {
 });
 
 
-app.get('/custom' , async(req , res)=>{
+app.get('/question' , async(req , res)=>{
     let {q} = req.query;
     try{
         const records = await getAirtableData();
-        res.send(records[q]);
+        // console.log(records[q].Question)
+        res.send(records[q].Question);
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
 })
+
+app.get('/optionA' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q].OptionA);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
+app.get('/optionB' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q].OptionB);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
+app.get('/optionC' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q].OptionC);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
+app.get('/optionD' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q].OptionD);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
+app.get('/Solution' , async(req , res)=>{
+    let {q} = req.query;
+    try{
+        const records = await getAirtableData();
+        // console.log(records[q].Question)
+        res.send(records[q].Solution);
+    }catch(error){
+    res.send("INTERNAL SERVER ERROR");
+    }
+})
+
+
 
 
 
