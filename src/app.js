@@ -36,6 +36,16 @@ async function getAirtableData() {
     }
 }
 
+async function getQuestions() {
+    const records = await getAirtableData();
+    return records.map((rec) => rec.Question);
+}
+
+app.get('/qq' , async(req , res)=>{
+    const keywords = await getQuestions();
+    let {q} = req.query;
+    return res.send(keywords[q])
+})
 
 
 app.get('/all', async(req, res) => {
