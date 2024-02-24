@@ -65,7 +65,7 @@ app.get('/question' , async(req , res)=>{
         const records = await getAirtableData();
         // console.log(records[q].Question)
         let myq = records[q];
-        res.json(myq['Question'].toString());
+        res.json(myq['Question']);
     }catch(error){
     res.send("INTERNAL SERVER ERROR");
     }
