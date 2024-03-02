@@ -2,15 +2,13 @@ import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
 
-
 const app = express();
 const PORT = process.env.PORT || 9000
-const YOUR_SECRET_API_TOKEN = 'patIHWbWN4xUjyUww.4287b75d4d56976c5dcc1d52839aaf1d47d62dfd70a9d2534450b570d27bf853';
-const BASE_ID = 'appWaP6gqg97rFvY7';
-const TABLE_NAME = 'IPL';
+const YOUR_SECRET_API_TOKEN = 'patWf7tZU8BIEZ2Pv.04f2f4c79ec651b90d1d8628c425a7b12c894eaed98180db7b9dab7ee427ce23';
+const BASE_ID = 'appqKisbvF1bD5z4o';
+const TABLE_NAME = 'Cricket';
 
 app.use(cors());
-
 async function getAirtableData() {
     const endpoint = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
     try{
@@ -24,7 +22,7 @@ async function getAirtableData() {
             throw new Error(`Failed to fetch data: ${response.statusText}`);
         }
         const data = await response.json();
-    return data.records;
+    return data.records.map(record => record.fields);
 
     }catch(error)
     {
@@ -33,47 +31,42 @@ async function getAirtableData() {
     }
 }
 
-async function getQuestions() {
-    const records = await getAirtableData();
-     return records;
-}
+
 
 app.get('/question' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.Question);
+    return res.send(keywords[q].Question);
 })
-
-
-app.get('/optionA' , async(req , res)=>{
+app.get('/A' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.OptionA);
+    return res.send(keywords[q].A);
 })
 
-app.get('/optionB' , async(req , res)=>{
+app.get('/B' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.OptionB);
+    return res.send(keywords[q].B);
 })
 
-app.get('/optionC' , async(req , res)=>{
+app.get('/C' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.OptionC);
+    return res.send(keywords[q].C);
 })
-app.get('/optionD' , async(req , res)=>{
+
+app.get('/D' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.OptionD);
+    return res.send(keywords[q].D)
 })
 
 app.get('/solution' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].fields.Solution);
+    return res.send(keywords[q].Solution);
 })
-
 
  
 app.get('/', (req, res) => {
