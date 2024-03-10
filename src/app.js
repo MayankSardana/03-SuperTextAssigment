@@ -36,41 +36,41 @@ async function getAirtableData() {
 app.get('/question' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].Question);
+    return res.json(keywords[q].Question);
 })
 app.get('/A' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].A);
+    return res.json(keywords[q].A);
 })
 
 app.get('/B' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].B);
+    return res.json(keywords[q].B);
 })
 
 app.get('/C' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].C);
+    return res.json(keywords[q].C);
 })
 
 app.get('/D' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].D)
+    return res.json(keywords[q].D)
 })
 
 app.get('/solution' , async(req , res)=>{
     let {q} = req.query;
     const keywords = await getAirtableData();    
-    return res.send(keywords[q].Solution);
+    return res.json(keywords[q].Solution);
 })
 
  
 app.get('/', (req, res) => {
-    res.send('Hello from the Airtable data server');
+    res.json('Hello from the Airtable data server');
 });
 
 app.listen(PORT, () => {
